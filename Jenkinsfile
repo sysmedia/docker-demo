@@ -63,7 +63,7 @@ pipeline {
                 
                 //sh "kubectl apply -f k8s-deployment.yml --namespace=${params.K8S_NAMESPACE}"
                // sh "kubectl delete deployment ${params.APP_NAME}-deployment"
-                sh "kubectl run ${params.APP_NAME}-${GIT_TAG} --image=${params.HARBOR_HOST}/${params.DOCKER_IMAGE}:${GIT_TAG}  --replicas=2"
+                sh "kubectl run ${params.APP_NAME}-${GIT_TAG} --image=${params.HARBOR_HOST}/${params.DOCKER_IMAGE}:${GIT_TAG}  --replicas=2 --kube-master-url=http://10.220.224.161:8080"
             }
             
         }
