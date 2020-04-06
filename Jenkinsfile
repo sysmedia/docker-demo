@@ -62,8 +62,8 @@ pipeline {
                 sh "sed -e 's#{IMAGE_URL}#${params.HARBOR_HOST}/${params.DOCKER_IMAGE}#g;s#{IMAGE_TAG}#${GIT_TAG}#g;s#{APP_NAME}#${params.APP_NAME}#g;s#{SPRING_PROFILE}#k8s-test#g' k8s-deployment.tpl > k8s-deployment.yml"
                 
                 //sh "kubectl apply -f k8s-deployment.yml --namespace=${params.K8S_NAMESPACE}"
-                sh "kubectl delete deployment ${params.APP_NAME}-deployment"
-                sh "kubectl run ${params.APP_NAME}-deployment --image=${params.HARBOR_HOST}/${params.DOCKER_IMAGE}:${GIT_TAG}  --replicas=2"
+               // sh "kubectl delete deployment ${params.APP_NAME}-deployment"
+                sh "kubectl run ${params.APP_NAME}-${GIT_TAG} --image=${params.HARBOR_HOST}/${params.DOCKER_IMAGE}:${GIT_TAG}  --replicas=2"
             }
             
         }
