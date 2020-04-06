@@ -56,7 +56,7 @@ pipeline {
             }
             steps {
                 //sh "cd "
-                
+                sh "whoami"
                 sh "pwd"
                 sh "mkdir -p .kube"
                 sh "echo ${K8S_CONFIG} | base64 -d > .kube/config"
