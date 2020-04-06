@@ -56,7 +56,8 @@ pipeline {
             }
             steps {
                 sh "cd "
-                sh "sudo kubectl delete deployment docker-demo-deployment"
+                sh "su root"
+                sh "kubectl delete deployment docker-demo-deployment"
                 sh "pwd"
                 sh "mkdir -p .kube"
                 sh "echo ${K8S_CONFIG} | base64 -d > .kube/config"
