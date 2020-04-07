@@ -56,8 +56,8 @@ pipeline {
             }
             steps {
                 sh "cd "
-                sh "su root"
-                sh "kubectl delete deployment docker-demo-deployment"
+            //    sh "su root"
+            //    sh "kubectl delete deployment docker-demo-deployment"
                 sh "pwd"
                 sh "mkdir -p .kube"
                 sh "echo ${K8S_CONFIG} | base64 -d > .kube/config"
@@ -65,7 +65,7 @@ pipeline {
                 
                 //sh "kubectl apply -f k8s-deployment.yml --namespace=${params.K8S_NAMESPACE}"
                // sh "kubectl delete deployment ${params.APP_NAME}-deployment"
-                sh "kubectl run ${params.APP_NAME}-${GIT_TAG} --image=${params.HARBOR_HOST}/${params.DOCKER_IMAGE}:${GIT_TAG}  --replicas=2  --kubeconfig=.kube/config"
+             //   sh "kubectl run ${params.APP_NAME}-${GIT_TAG} --image=${params.HARBOR_HOST}/${params.DOCKER_IMAGE}:${GIT_TAG}  --replicas=2  --kubeconfig=.kube/config"
             }
             
         }
